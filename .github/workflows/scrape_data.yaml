@@ -1,6 +1,6 @@
 on:
-  push:
-    branches: main
+  schedule:
+    - cron: '55 18 * * *' # This will run the workflow every day at 6:55 PM
 
 jobs:
   import-data:

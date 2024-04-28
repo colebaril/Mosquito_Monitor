@@ -14,6 +14,10 @@ A shiny app reads the `mosquito_data.rds` file and displays summary tables and f
 
 I am currently working on ways to incorporate AFA analyses into the data and app, which is a calculation based on soil moisuture conditions, forecasted rainfall, trap counts, temperature and status of larval development sites. The City of Winnipeg monitors these factors, but only presents a static figure on their website. 
 
+# Disclaimer
+
+This application is not affiliated with, endorsed by, or sponsored by the City of Winnipeg. All data utilized in this application is obtained from publicly available sources provided by the City of Winnipeg. The creators of this application do not claim ownership of the data provided by the City of Winnipeg and do not assume responsibility for the accuracy or completeness of the data. Users of this application should verify any information obtained from this application with official sources.
+
 # References 
 
 Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache

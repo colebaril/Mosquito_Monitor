@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 0 * * *' # This will run the workflow every day at midnight
+    - cron: '0 * * * *' # This will run the workflow at the beginning of every hour
 
 jobs:
   import-data:

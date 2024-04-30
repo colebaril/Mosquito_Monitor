@@ -17,24 +17,13 @@ scrape_and_save_data <- function() {
   data <- webpage %>%
     html_table(fill = TRUE) %>%
     .[[2]]  # Assuming the data is in the first table
-  
-  # Load existing data (if any)
-  if (file.exists("data.csv")) {
-    existing_data <- read.csv("data.csv")
-  } else {
-    existing_data <- data.frame()
-  }
-  
-  # Append new data to the existing data frame
-  updated_data <- rbind(existing_data, data)
-  
-  # Save the updated data to a CSV file
-  write.csv(updated_data, "data.csv", row.names = FALSE)
-  
-  return(updated_data)
+
+  return(data)
 }
 
-master_data_old <- readRDS("mosquito_data.rds")
+master_data_old <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE")) 
+  # mutate(date = date-10) %>% 
+  # mutate(region_name = trap)
 
 if(max(master_data_old$date) == Sys.Date()) {
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
@@ -51,24 +40,37 @@ trap_data_metro <- data %>%
                values_to = "number") %>% 
   mutate(number = na_if(number, "**")) %>% 
   mutate(number = na_if(number, "*")) %>% 
-  mutate(date = Sys.Date()) %>% 
+  mutate(date = Sys.Date()-5) %>% 
   mutate(region = "Out of City Limits") %>% 
   mutate(number = as.numeric(number)) %>% 
-  distinct(trap, .keep_all = TRUE)
+  distinct(trap, .keep_all = TRUE) %>% 
+  mutate(region_name = case_when(trap == "aa" ~ "aa",
+                            trap == "bb" ~ "bb",
+                            trap == "cc" ~ "West St. Paul",
+                            trap == "dd" ~ "East St. Paul",
+                            trap == "ee" ~ "Oakbank",
+                            trap == "ff" ~ "Springfield",
+                            trap == "gg" ~ "Oak Bluff",
+                            trap == "hh" ~ "MacDonald",
+                            trap == "ii" ~ "Headingly",
+                            TRUE ~ NA))
 
 trap_data_wpg <- data %>% 
   select(1, 2) %>% 
   rename(trap = X1,
          number = X2) %>% 
   filter(str_detect(trap, "^[A-Za-z][A-Za-z]\\d$")) %>% 
-  mutate(date = as.Date(Sys.Date(), format = "%Y-%m-%d")) %>%
+  mutate(date = as.Date(Sys.Date(), format = "%Y-%m-%d")-5) %>%
   mutate(region = str_extract(trap, "^[A-Za-z][A-Za-z]")) %>% 
   mutate(number = na_if(number, "**")) %>% 
   mutate(number = na_if(number, "*")) %>% 
   mutate(number = as.numeric(number)) %>% 
-  distinct(trap, .keep_all = TRUE)
+  distinct(trap, .keep_all = TRUE) %>% 
+  mutate(region_name = trap)
 
-master_data <- rbind(trap_data_wpg, trap_data_metro, master_data_old)
+
+master_data <- rbind(trap_data_wpg, trap_data_metro, master_data_old) 
+  
 
 master_data %>% 
   write_rds("mosquito_data.rds")

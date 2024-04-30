@@ -18,6 +18,10 @@ I am currently working on ways to incorporate AFA analyses into the data and app
 
 This application is not affiliated with, endorsed by, or sponsored by the City of Winnipeg. All data utilized in this application is obtained from publicly available sources provided by the City of Winnipeg. The creators of this application do not claim ownership of the data provided by the City of Winnipeg and do not assume responsibility for the accuracy or completeness of the data. Users of this application should verify any information obtained from this application with official sources.
 
+# Data
+
+The City of Brandon publishes their historical data annually on their website. However, the City of Winnipeg does not. I have submitted an access to information request for all historical data for use in this app, however I expect this process will take a long time. Similarly, the Manitoba Government does not post any historical trapping data for provincial traps on their website, only the number of *Culex tarsalis* specimens identified. If you have any sources of data you wish to contribute, please email me at cole@colebaril.ca. 
+
 # References 
 
 Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache

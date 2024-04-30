@@ -16,7 +16,7 @@ I am currently working on ways to incorporate AFA analyses into the data and app
 
 # Disclaimer
 
-This application is not affiliated with, endorsed by, or sponsored by the City of Winnipeg. All data utilized in this application is obtained from publicly available sources provided by the City of Winnipeg. The creators of this application do not claim ownership of the data provided by the City of Winnipeg and do not assume responsibility for the accuracy or completeness of the data. Users of this application should verify any information obtained from this application with official sources.
+This application is not affiliated with, endorsed by, or sponsored by the City of Winnipeg, City of Brandon, or Government of Manitoba. All data utilized in this application is obtained from publicly available sources provided by the City of Winnipeg, City of Brandon and Manitoba Government. The creators of this application do not claim ownership of the data provided by the City of Winnipeg, City of Brandon or the Manitoba Government and do not assume responsibility for the accuracy or completeness of the data. Users of this application should verify any information obtained from this application with official sources.
 
 # Data
 

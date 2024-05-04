@@ -6,14 +6,24 @@ library(tidyr)
 library(lubridate)
 library(readr)
 
-# Test
 # Define the URL you want to scrape
 url <- "https://legacy.winnipeg.ca/publicworks/insectcontrol/mosquitoes/trapcounts.stm"
+
+# Check date updated
+
+webpage <- read_html(url)
+
+date_updated <- html_nodes(webpage, "#lastUpdateDate") %>% 
+  html_text() %>% 
+  str_extract(., "\\b[A-Za-z]+ \\d{1,2}, \\d{4}\\b") 
+
+date_updated <- format(as.Date(date_updated, "%B %d, %Y"), "%Y-%m-%d")
 
 # Function to scrape and save data
 scrape_and_save_data <- function() {
   # Scrape data from the website
   webpage <- read_html(url)
+
   data <- webpage %>%
     html_table(fill = TRUE) %>%
     .[[2]]  # Assuming the data is in the first table
@@ -21,13 +31,17 @@ scrape_and_save_data <- function() {
   return(data)
 }
 
-master_data_old <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE")) 
-  # mutate(date = date-10) %>% 
-  # mutate(region_name = trap)
+master_data_old <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE")) %>% 
 
-if(max(master_data_old$date) == Sys.Date()) {
+  mutate(number = NA)
+
+if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
+  
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
-} else {
+  
+  message(paste0("Website last updated: ", date_updated, "."))
+  
+} else if(date_updated == Sys.Date()) {
 
 data <- scrape_and_save_data()
 
@@ -40,7 +54,7 @@ trap_data_metro <- data %>%
                values_to = "number") %>% 
   mutate(number = na_if(number, "**")) %>% 
   mutate(number = na_if(number, "*")) %>% 
-  mutate(date = Sys.Date()-5) %>% 
+  mutate(date = Sys.Date()) %>% 
   mutate(region = "Out of City Limits") %>% 
   mutate(number = as.numeric(number)) %>% 
   distinct(trap, .keep_all = TRUE) %>% 
@@ -60,7 +74,7 @@ trap_data_wpg <- data %>%
   rename(trap = X1,
          number = X2) %>% 
   filter(str_detect(trap, "^[A-Za-z][A-Za-z]\\d$")) %>% 
-  mutate(date = as.Date(Sys.Date(), format = "%Y-%m-%d")-5) %>%
+  mutate(date = as.Date(Sys.Date(), format = "%Y-%m-%d")) %>%
   mutate(region = str_extract(trap, "^[A-Za-z][A-Za-z]")) %>% 
   mutate(number = na_if(number, "**")) %>% 
   mutate(number = na_if(number, "*")) %>% 
@@ -71,6 +85,8 @@ trap_data_wpg <- data %>%
 
 master_data <- rbind(trap_data_wpg, trap_data_metro, master_data_old) 
   
+message(paste0("Data has been updated on ", Sys.Date(), "."))
+message(paste0("Website last updated ", date_updated, "."))
 
 master_data %>% 
   write_rds("mosquito_data.rds")

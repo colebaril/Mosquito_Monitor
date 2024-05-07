@@ -2,19 +2,21 @@
 
 [![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) ![](https://img.shields.io/badge/Status-In_Development-purple) ![](https://img.shields.io/badge/Build-Functional-green) ![](https://img.shields.io/badge/Version-0.0.1-orange)
 
-I developed a workflow and app that, in conjunction, collects mosquito trap data from government sources, stores historical data, and displays data in a digestable format. Historical data for the City of Brandon and Western Manitoba will be displayed in addition to daily updates on City of Winnipeg and City of Brandon trap counts. 
+I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monitor/blob/main/.github/workflows/) and [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) that, in conjunction, collects mosquito trap data from government sources, stores historical data, and displays data in a digestable format. Historical data for the City of Brandon, City of Winnipeg and Western Manitoba will be displayed in addition to daily updates on City of Winnipeg and City of Brandon trap counts. 
 
 # Workflow 
 
-Everyday, a workflow runs via GitHub Actions. This workflow scrapes data from various sources, cleans the data and appends metadata. The resulting file is saved as `mosquito_data.rds` in this repository and may be downloaded from the app by navigating to the `Data` tab and clicking either the `csv` or `Excel` buttons. 
+A scheduled workflow runs via GitHub Actions. This workflow scrapes data from various sources including the City of Winnipeg and City of Brandon websites. The workflow then cleans the data and appends metadata. The resulting file is saved as `mosquito_data.rds` in this repository and may be downloaded from the app by navigating to the `Data` tab and clicking either the `csv` or `Excel` buttons. 
 
 # App 
 
-A shiny app reads the `mosquito_data.rds` file and displays summary tables and figures. 
+A shiny app reads the `mosquito_data.rds` file and displays summary tables, figures and downloadable data. 
 
-# In Development
+#  Historic Metadata Analysis 
 
-I am currently working on ways to incorporate AFA analyses into the data and app, which is a calculation based on soil moisuture conditions, forecasted rainfall, trap counts, temperature and status of larval development sites. The City of Winnipeg monitors these factors, but only presents a static figure on their website. 
+## City of Winnipeg 
+
+## City of Brandon 
 
 # Disclaimer
 
@@ -22,9 +24,15 @@ This application is not affiliated with, endorsed by, or sponsored by the City o
 
 # Data
 
-The City of Brandon publishes their historical data annually on their website. However, the City of Winnipeg does not. I have submitted an access to information request for all historical data for use in this app, however I expect this process will take a long time. Similarly, the Manitoba Government does not post any historical trapping data for provincial traps on their website, only the number of *Culex tarsalis* specimens identified. If you have any sources of data you wish to contribute, please email me at cole@colebaril.ca. 
+The City of Brandon and City of Winnipeg publishes their historical data annually on their websites. The Manitoba Government does not post any historical trapping data for provincial traps on their website, only the number of *Culex tarsalis* specimens identified. If you have any sources of data you wish to contribute, please email me at cole@colebaril.ca. 
 
 # References 
+
+Baril, C., Pilling, B.G., Mikkelsen, M.J. et al. The influence of weather on the population dynamics of common mosquito vector species in the Canadian Prairies. _Parasites Vectors 16_, 153 (2023). <https://doi.org/10.1186/s13071-023-05760-x>. 
+
+City of Winnipeg (2024). _Nuisance Mosquito Trap Counts_. <https://legacy.winnipeg.ca/publicworks/insectcontrol/mosquitoes/trapcounts.stm>.
+
+City of Brandon (2024). _Mosquito Abatement Program_. <https://brandon.ca/mosquito-abatement/mosquito-abatement-program>. 
 
 Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache
 SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.”
@@ -46,4 +54,4 @@ Xie Y, Cheng J, Tan X (2023). _DT: A Wrapper of the JavaScript Library 'DataTabl
 
 Chang W (2021). _shinythemes: Themes for Shiny_. R package version 1.2.0, <https://CRAN.R-project.org/package=shinythemes>.
 
-City of Winnipeg (2024). _Nuisance Mosquito Trap Counts_. <https://legacy.winnipeg.ca/publicworks/insectcontrol/mosquitoes/trapcounts.stm>.
+

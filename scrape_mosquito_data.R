@@ -58,16 +58,16 @@ trap_data_metro <- data %>%
   mutate(region = "Out of City Limits") %>% 
   mutate(number = as.numeric(number)) %>% 
   distinct(trap, .keep_all = TRUE) %>% 
-  mutate(region_name = case_when(trap == "aa" ~ "aa",
-                            trap == "bb" ~ "bb",
-                            trap == "cc" ~ "West St. Paul",
-                            trap == "dd" ~ "East St. Paul",
-                            trap == "ee" ~ "Oakbank",
-                            trap == "ff" ~ "Springfield",
-                            trap == "gg" ~ "Oak Bluff",
-                            trap == "hh" ~ "MacDonald",
-                            trap == "ii" ~ "Headingly",
-                            TRUE ~ NA))
+  mutate(region_name = case_when(str_detect(trap, "aa") ~ "Lilyfield",
+                            str_detect(trap, "bb") ~ "North Perimeter",
+                            str_detect(trap, "cc") ~ "West St. Paul",
+                            str_detect(trap, "dd") ~ "East St. Paul",
+                            str_detect(trap, "ee") ~ "Springfield",
+                            str_detect(trap, "ff") ~ "Ritchot",
+                            str_detect(trap, "gg") ~ "MacDonald",
+                            str_detect(trap, "hh") ~ "Headingly",
+                            str_detect(trap, "ii") ~ "Rosser",
+                            TRUE ~ NA)) 
 
 trap_data_wpg <- data %>% 
   select(1, 2) %>% 

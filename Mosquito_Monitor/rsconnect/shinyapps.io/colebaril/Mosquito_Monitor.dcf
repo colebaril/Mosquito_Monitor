@@ -1,0 +1,13 @@
+name: Mosquito_Monitor
+title: Mosquito_Monitor
+username: colebaril
+account: colebaril
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11881572
+bundleId: 8594160
+url: https://colewb.shinyapps.io/Mosquito_Monitor/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: mosquito_data.rds

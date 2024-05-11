@@ -31,9 +31,7 @@ scrape_and_save_data <- function() {
   return(data)
 }
 
-master_data_old <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE")) %>% 
-
-  mutate(number = NA)
+master_data_old <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE"))
 
 if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
   

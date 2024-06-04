@@ -13,10 +13,10 @@ def create_api():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     
-    api = tweepy.API(auth)
+    api = tweepy.Client(auth)
     return api
 
 def tweet(message):
     api = create_api()
-    api.create_tweet(text=message)
+    api.publish_tweet(text=message)
     print("Tweeted:", message)

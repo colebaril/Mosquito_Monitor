@@ -18,5 +18,5 @@ def create_api():
 
 def tweet(message):
     api = create_api()
-    api.publish_tweet(text=message)
+    api.create_tweet(text=message)
     print("Tweeted:", message)

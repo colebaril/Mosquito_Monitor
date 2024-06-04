@@ -7,12 +7,6 @@ def create_api():
     access_token = os.getenv('ACCESS_TOKEN')
     access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
 
-print(os.getenv('CONSUMER_TOKEN'))
-print(os.getenv('CONSUMER_TOKEN_SECRET'))
-print(os.getenv('ACCESS_TOKEN'))
-print(os.getenv('ACCESS_TOKEN_SECRET'))
-
-
 if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
     raise ValueError("Twitter API credentials are not set properly")
 

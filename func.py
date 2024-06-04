@@ -1,14 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Funções
-
-# ## Importing libs
-
-import os
 import tweepy
-
-# ## Auth
+import os
 
 def create_api():
     consumer_key = os.getenv('CONSUMER_TOKEN')
@@ -16,8 +7,8 @@ def create_api():
     access_token = os.getenv('ACCESS_TOKEN')
     access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
 
-if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
-    raise ValueError("Twitter API credentials are not set properly")
+    if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
+        raise ValueError("Twitter API credentials are not set properly")
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -29,9 +20,3 @@ def tweet(message):
     api = create_api()
     api.update_status(message)
     print("Tweeted:", message)
-
-
-
-
-
-

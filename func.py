@@ -18,5 +18,5 @@ def create_api():
 
 def tweet(message):
     api = create_api()
-    tweepy.Client.create_tweet(text=message)
+    client.create_tweet(text=message)
     print("Tweeted:", message)

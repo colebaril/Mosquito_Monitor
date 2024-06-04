@@ -13,8 +13,8 @@ print(os.getenv('ACCESS_TOKEN'))
 print(os.getenv('ACCESS_TOKEN_SECRET'))
 
 
-    if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
-        raise ValueError("Twitter API credentials are not set properly")
+if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
+    raise ValueError("Twitter API credentials are not set properly")
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)

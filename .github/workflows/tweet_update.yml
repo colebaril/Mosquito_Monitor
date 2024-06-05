@@ -23,7 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install tweepy
           pip install Pillow
-          pip install io
 
       - name: Debug Environment Variables
         run: |

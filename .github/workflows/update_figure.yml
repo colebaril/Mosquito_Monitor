@@ -1,8 +1,11 @@
 name: Update Figure
 
 on:
-  schedule:
-    - cron: '45 * * * *' # This will run the workflow at the beginning of every hour
+  push:
+    branches:
+      - main
+    paths:
+      - mosquito_data.csv
 
 jobs:
   import-data:

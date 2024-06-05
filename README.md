@@ -8,7 +8,7 @@ I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monito
 
 ## Version 0.0.3
 
-- Changed y axis trans to `log1p` to better display the poisson-like mosquito trap count distributions
+- Changed y axis trans to `log1p` for the faceted Winnipeg plots to better display the poisson-like mosquito trap count distributions
 - Implemented a Twitter Bot using Python that sends a Tweet with the city map when the data has been updated
 
 ## Version 0.0.2

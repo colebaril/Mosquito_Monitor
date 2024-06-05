@@ -31,6 +31,6 @@ else:
     
 # Create a tweet
 message="Hello from GitHub Actions. This is a test."
-media_id = image
-client.create_tweet(media_ids = [media_id], text=message)
+media_id = [image]
+client.create_tweet(media_ids=media_id, text=message)
 print("Tweeted!")

@@ -55,7 +55,8 @@ media = client_v1.media_upload(filename=media_path)
 media_id = media.media_id
 
 # Get the current date
-    current_date = datetime.now().strftime('%Y-%m-%d')
+current_date = datetime.now().strftime('%Y-%m-%d')
+
 # Create a tweet
 message = f"City of Winnipeg mosquito trap counts have been updated as of {current_date}. See a detailed update here: https://github.com/colebaril/Mosquito_Monitor"
 client_v2.create_tweet(media_ids=[media_id], text=message)

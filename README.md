@@ -1,29 +1,32 @@
 # Mosquito Monitor  <img src='mosquito_monitor_hexsticker.png' align="right" height="210" />
 
-[![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) ![](https://img.shields.io/badge/Status-In_Development-purple) ![](https://img.shields.io/badge/Build-Functional-green) ![](https://img.shields.io/badge/Version-0.0.2-orange)
+[![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) ![](https://img.shields.io/badge/Status-In_Development-purple) ![](https://img.shields.io/badge/Build-Functional-green) ![](https://img.shields.io/badge/Version-0.0.3-orange)
 
 I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monitor/blob/main/.github/workflows/) and [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) that, in conjunction, collects mosquito trap data from government sources, stores historical data, and displays data in a digestable format. Historical data for the City of Brandon, City of Winnipeg and Western Manitoba will be displayed in addition to daily updates on City of Winnipeg and City of Brandon trap counts. 
 
 # Updates
+
+## Version 0.0.3
+
+- Changed y axis trans to `log1p` to better display the poisson-like mosquito trap count distributions
+- Implemented a Twitter Bot using Python that sends a Tweet with the city map when the data has been updated
 
 ## Version 0.0.2
 
 - Introduced a map of Winnipeg displaying the number of specimens caught in each zone separated by Forward Sortation Area
 - Introduced comparable weather data along with City of Winnipeg historical trapping data (e.g., temperature, precipitation)
 
-# Workflow 
+# GitHub Actions
 
-A scheduled workflow runs via GitHub Actions. This workflow scrapes data from various sources including the City of Winnipeg and City of Brandon websites. The workflow then cleans the data and appends metadata. The resulting file is saved as `mosquito_data.rds` in this repository and may be downloaded from the app by navigating to the `Data` tab and clicking either the `csv` or `Excel` buttons. 
+This repository and Shiny app relies on various automated GitHub Actions workflows:
 
-# App 
+1. `scrape_data`: Checks the City of Winnipeg Insect Control website once per hour for updates. If an update is found, the data is pushed to the `main` branch in this repository as `mosquito_data.csv`. This [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) `mosquito_data.csv` to display data.
+2. `update_figure`: When `mosquito_data.csv` is changed in the `main` branch, a new figure, `wpg_mosquito_map_tmp.png`, is pushed to the `main` repository in this branch.
+3. `tweet_update`: When `wpg_mosquito_map_tmp.png` is changed in the `main` branch, a Tweet is sent via [Tweepy](https://www.tweepy.org/) and `tweet_mosquito_update.py` by the Mosquito Monitor Twitter Account with the date the data was updated as well as the Forward Sortation Area (FSA) Boundary map of Winnipeg with FSAs filled with the number of mosquitoes collected.
 
-A shiny app reads the `mosquito_data.rds` file remotely and displays summary tables, figures and downloadable data. Weather data was obtained from [Environment and Climate Change Canada's Winnipeg A CS Weather Station](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=2013-12-10%7C2024-05-26&dlyRange=1996-10-01%7C2024-05-26&mlyRange=1996-10-01%7C2007-11-01&StationID=27174&Prov=MB&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2024&selRowPerPage=25&Line=0&searchMethod=contains&Month=5&Day=26&txtStationName=Winnipeg&timeframe=1&Year=2024) using the [weathercan package](https://github.com/ropensci/weathercan). The map of Winnipeg was constructed using data obtained from [Statistics Canada Boundary Files](https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?Year=21) and the [sf package](https://cran.r-project.org/web/packages/sf/index.html). 
+# Shiny App 
 
-#  Historic Metadata Analysis 
-
-## City of Winnipeg 
-
-## City of Brandon 
+A shiny app reads the `mosquito_data.csv` file remotely and displays summary tables, figures and downloadable data. Weather data was obtained from [Environment and Climate Change Canada's Winnipeg A CS Weather Station](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=2013-12-10%7C2024-05-26&dlyRange=1996-10-01%7C2024-05-26&mlyRange=1996-10-01%7C2007-11-01&StationID=27174&Prov=MB&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2024&selRowPerPage=25&Line=0&searchMethod=contains&Month=5&Day=26&txtStationName=Winnipeg&timeframe=1&Year=2024) using the [weathercan package](https://github.com/ropensci/weathercan). The map of Winnipeg was constructed using data obtained from [Statistics Canada Boundary Files](https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?Year=21) and the [sf package](https://cran.r-project.org/web/packages/sf/index.html). 
 
 # Disclaimer
 

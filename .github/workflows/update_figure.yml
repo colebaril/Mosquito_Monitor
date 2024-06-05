@@ -1,11 +1,8 @@
 name: Update Figure
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - mosquito_data.csv
+  schedule:
+    - cron: '15 * * * *' # This will run the workflow at 15-after every hour
 
 jobs:
   import-data:

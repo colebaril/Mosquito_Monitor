@@ -2,7 +2,7 @@ name: Update Figure
 
 on:
   schedule:
-    - cron: '30 * * * *' # This will run the workflow at the beginning of every hour
+    - cron: '45 * * * *' # This will run the workflow at the beginning of every hour
 
 jobs:
   import-data:

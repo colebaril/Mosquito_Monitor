@@ -10,10 +10,30 @@ consumer_secret = os.getenv('CONSUMER_TOKEN_SECRET')
 access_token = os.getenv('ACCESS_TOKEN')
 access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
 
-client = tweepy.Client(consumer_key=consumer_key,consumer_secret=consumer_secret,access_token=access_token,access_token_secret=access_token_secret)
+def get_twitter_conn_v1(api_key, api_secret, access_token, access_token_secret) -> tweepy.API:
+    """Get twitter conn 1.1"""
 
-auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
-api = tweepy.API(auth)
+    auth = tweepy.OAuth1UserHandler(api_key, api_secret)
+    auth.set_access_token(
+        access_token,
+        access_token_secret,
+    )
+    return tweepy.API(auth)
+
+def get_twitter_conn_v2(api_key, api_secret, access_token, access_token_secret) -> tweepy.Client:
+    """Get twitter conn 2.0"""
+
+    client = tweepy.Client(
+        consumer_key=api_key,
+        consumer_secret=api_secret,
+        access_token=access_token,
+        access_token_secret=access_token_secret,
+    )
+
+    return client
+
+client_v1 = get_twitter_conn_v1(api_key, api_secret, access_token, access_token_secret)
+client_v2 = get_twitter_conn_v2(api_key, api_secret, access_token, access_token_secret)
 
 if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
     raise ValueError("Twitter API credentials are not set properly")
@@ -31,13 +51,11 @@ if response.status_code == 200:
 else:
     print(f"Failed to download image. Status code: {response.status_code}")
 
-# Upload the image
-    media = api.media_upload(local_image_path)
-    
-    # Get the media_id
-    media_id = media.media_id_string
+media_path = local_image_path
+media = client_v1.media_upload(filename=media_path)
+media_id = media.media_id
     
 # Create a tweet
 message="Hello from GitHub Actions. This is a test."
-client.create_tweet(media_ids=[media_id], text=message)
+client_v2.create_tweet(media_ids=[media_id], text=message)
 print("Tweeted!")

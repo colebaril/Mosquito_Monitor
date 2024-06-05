@@ -20,9 +20,11 @@ I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monito
 
 This repository and Shiny app relies on various automated GitHub Actions workflows:
 
-1. `scrape_data`: Checks the City of Winnipeg Insect Control website once per hour for updates. If an update is found, the data is pushed to the `main` branch in this repository as `mosquito_data.csv`. This [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) `mosquito_data.csv` to display data.
-2. `update_figure`: When `mosquito_data.csv` is changed in the `main` branch, a new figure, `wpg_mosquito_map_tmp.png`, is pushed to the `main` repository in this branch.
-3. `tweet_update`: When `wpg_mosquito_map_tmp.png` is changed in the `main` branch, a Tweet is sent via [Tweepy](https://www.tweepy.org/) and `tweet_mosquito_update.py` by the [Mosquito Monitor Twitter Account](https://twitter.com/MosquitoMonitor) with the date the data was updated as well as the Forward Sortation Area (FSA) Boundary map of Winnipeg with FSAs filled with the number of mosquitoes collected.
+1. **Scrape Data**: Checks the City of Winnipeg Insect Control website once per hour for updates. If an update is found, the data is pushed to the `main` branch in this repository as `mosquito_data.csv`. This [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) `mosquito_data.csv` to display data.
+   
+2. **Update Figure**: When `mosquito_data.csv` is changed in the `main` branch, a new figure, `wpg_mosquito_map_tmp.png`, is pushed to the `main` repository in this branch.
+   
+3. **Tweet Update**: When `wpg_mosquito_map_tmp.png` is changed in the `main` branch, a Tweet is sent via [Tweepy](https://www.tweepy.org/) and `tweet_mosquito_update.py` by the [Mosquito Monitor Twitter Account](https://twitter.com/MosquitoMonitor) with the date the data was updated as well as the Forward Sortation Area (FSA) Boundary map of Winnipeg with FSAs filled with the number of mosquitoes collected.
 
 # Shiny App 
 

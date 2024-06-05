@@ -20,6 +20,8 @@ if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
 
     # Get the media_id
     media_id = media.media_id_string
+
+print([media_id])
     
 # Create a tweet
 message="Hello from GitHub Actions. This is a test."

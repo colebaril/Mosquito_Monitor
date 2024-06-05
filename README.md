@@ -16,6 +16,10 @@ I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monito
 - Introduced a map of Winnipeg displaying the number of specimens caught in each zone separated by Forward Sortation Area
 - Introduced comparable weather data along with City of Winnipeg historical trapping data (e.g., temperature, precipitation)
 
+# Citing This Repository
+
+Baril, Cole. (2024). _Mosquito Monitor: An Automated Workflow and Shiny App for Mosquito Trap Data Collection and Visualization_ [Repository]. GitHub. https://github.com/colebaril/Mosquito_Monitor
+
 # GitHub Actions
 
 This repository and Shiny app relies on various automated GitHub Actions workflows:

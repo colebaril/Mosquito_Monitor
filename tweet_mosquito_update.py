@@ -1,7 +1,7 @@
 import tweepy
 import os
 import requests
-from PIL import Image
+import imageio as iio
 from io import BytesIO
 
 
@@ -24,7 +24,7 @@ response = requests.get(image_url)
 # Check if the request was successful
 if response.status_code == 200:
     # Open the image from the response content
-    image = Image.open(BytesIO(response.content))
+    image = iio.imread(BytesIO(response.content))
 else:
     print(f"Failed to retrieve the image. Status code: {response.status_code}")
     

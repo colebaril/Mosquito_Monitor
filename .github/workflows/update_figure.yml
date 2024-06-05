@@ -21,6 +21,8 @@ jobs:
 
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SCRAPE_DATA_SECRET }}
 
       - name: Import data
         run: Rscript -e 'source("update_wpg_figure.R")'

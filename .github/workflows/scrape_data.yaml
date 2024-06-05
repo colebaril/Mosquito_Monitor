@@ -1,3 +1,4 @@
+name: Scrape Data
 on:
   schedule:
     - cron: '0 * * * *' # This will run the workflow at the beginning of every hour

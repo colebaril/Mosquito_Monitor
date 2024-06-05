@@ -4,4 +4,3 @@ requests==2.31.0
 pandas
 os
 Pillow
-io

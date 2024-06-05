@@ -1,7 +1,7 @@
 import tweepy
 import os
 import requests
-import Image
+from Pillow import Image
 from io import BytesIO
 
 

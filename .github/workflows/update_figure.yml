@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - mosquito_data.rds
+      - mosquito_data.csv
 
 jobs:
   import-data:

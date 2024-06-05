@@ -58,6 +58,6 @@ media_id = media.media_id
 current_date = datetime.now().strftime('%Y-%m-%d')
 
 # Create a tweet
-message = f"City of Winnipeg mosquito trap counts have been updated as of {current_date}. See a detailed update here: https://github.com/colebaril/Mosquito_Monitor"
+message = f"City of Winnipeg mosquito trap counts have been updated as of {current_date}. See a detailed update here: https://github.com/colebaril/Mosquito_Monitor. #Mosquito #Winnipeg #CityOfWinnipeg #InsectControl"
 client_v2.create_tweet(media_ids=[media_id], text=message)
 print("Tweeted!")

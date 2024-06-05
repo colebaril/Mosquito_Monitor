@@ -66,9 +66,13 @@ n_lilyfield <- master_data %>%
 download.file(url = "https://github.com/colebaril/Mosquito_Monitor/archive/be9f58d9fb6bc1940a67215cff8dd33e719bd780.zip",
               destfile = "Clone/Master.zip")
 
+print("Downloaded Data")
+
 unzip(zipfile = "Clone/Master.zip")
 
-list.files("Mosquito_Monitor-be9f58d9fb6bc1940a67215cff8dd33e719bd780")
+print("Unzipped data")
+
+print(list.files("Mosquito_Monitor-be9f58d9fb6bc1940a67215cff8dd33e719bd780"))
 
 shape <- read_sf("Mosquito_Monitor-be9f58d9fb6bc1940a67215cff8dd33e719bd780/Shape Data/wpg_shape_data.shp")
 

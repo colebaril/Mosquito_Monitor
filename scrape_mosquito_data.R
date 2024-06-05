@@ -31,7 +31,7 @@ scrape_and_save_data <- function() {
   return(data)
 }
 
-master_data_old <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE"))
+master_data_old <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
 
 if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
   
@@ -87,4 +87,10 @@ message(paste0("Data has been updated on ", Sys.Date(), "."))
 message(paste0("Website last updated ", date_updated, "."))
 
 write.csv(master_data, "mosquito_data.csv", row.names = FALSE)
+
+
 }
+
+
+
+

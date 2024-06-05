@@ -21,6 +21,6 @@ if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
 
 
 # Create a tweet
-
+message="Hello from GitHub Actions"
 client.create_tweet(text=message)
 print("Tweeted!")

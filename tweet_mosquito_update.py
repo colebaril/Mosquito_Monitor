@@ -1,8 +1,8 @@
 import tweepy
 import os
 import requests
-import cv2
-import numpy as np
+from PIL import Image
+from io import BytesIO
 
 
 consumer_key = os.getenv('CONSUMER_TOKEN')
@@ -23,11 +23,8 @@ response = requests.get(image_url)
 
 # Check if the request was successful
 if response.status_code == 200:
-    # Convert the image content to a numpy array
-    image_array = np.asarray(bytearray(response.content), dtype=np.uint8)
-    
-    # Decode the numpy array to an image
-    image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+    # Open the image from the response content
+    image = Image.open(BytesIO(response.content))
     
 else:
     print(f"Failed to retrieve the image. Status code: {response.status_code}")

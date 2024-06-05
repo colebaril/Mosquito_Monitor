@@ -7,7 +7,7 @@ library(lubridate)
 library(ggplot2)
 library(readr)
 
-master_data <- readRDS(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.rds?raw=TRUE"))
+master_data <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
 
 n_ross <- master_data %>% 
   filter(date == max(master_data$date)) %>%

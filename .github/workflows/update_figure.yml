@@ -1,8 +1,9 @@
 name: Update Figure
 
 on:
-  schedule:
-    - cron: '15 * * * *' # This will run the workflow at 15-after every hour
+  push:
+    branches:
+      - main
 
 jobs:
   import-data:

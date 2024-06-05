@@ -23,6 +23,5 @@ if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
     
 # Create a tweet
 message="Hello from GitHub Actions. This is a test."
-media_id = [media_id]
-client.create_tweet(media_ids=media_id, text=message)
+client.create_tweet(media_ids=[media_id], text=message)
 print("Tweeted!")

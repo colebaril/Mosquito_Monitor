@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - wpg_mosquito_map_tmp.png
 
 jobs:
   tweet:

@@ -86,6 +86,5 @@ master_data <- rbind(trap_data_wpg, trap_data_metro, master_data_old)
 message(paste0("Data has been updated on ", Sys.Date(), "."))
 message(paste0("Website last updated ", date_updated, "."))
 
-master_data %>% 
-  write_rds("mosquito_data.rds")
+write.csv(master_data, "mosquito_data.csv", row.names = FALSE)
 }

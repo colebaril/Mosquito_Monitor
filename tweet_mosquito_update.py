@@ -1,8 +1,6 @@
 import tweepy
 import os
 import requests
-from PIL import Image
-from io import BytesIO
 
 
 consumer_key = os.getenv('CONSUMER_TOKEN')

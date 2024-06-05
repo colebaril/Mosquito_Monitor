@@ -20,6 +20,9 @@ jobs:
 
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SCRAPE_DATA_SECRET }}
+
 
       - name: Import data
         run: Rscript -e 'source("scrape_mosquito_data.R")'
@@ -31,3 +34,5 @@ jobs:
           git add mosquito_data.csv
           git commit -m 'Data updated' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
+
+    

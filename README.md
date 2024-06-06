@@ -50,6 +50,13 @@ City of Winnipeg (2024). _Nuisance Mosquito Trap Counts_. <https://legacy.winnip
 
 City of Brandon (2024). _Mosquito Abatement Program_. <https://brandon.ca/mosquito-abatement/mosquito-abatement-program>. 
 
+Environment and Climate Change Canada (2024). _WINNIPEG A CS Weather Station_. <https://climate.weather.gc.ca/climate_data/>. 
+
+R Core Team (2023). _R: A Language and Environment for Statistical Computing_. R Foundation for Statistical Computing, Vienna, Austria.
+<https://www.R-project.org/>.
+
+Python Software Foundation. (2024). _Python Language Reference, version 3.10_. Available at https://www.python.org.
+
 Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache
 SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.”
 _Journal of Open Source Software_, *4*(43), 1686. doi:10.21105/joss.01686 <https://doi.org/10.21105/joss.01686>.
@@ -58,6 +65,12 @@ Wickham H (2024). _rvest: Easily Harvest (Scrape) Web Pages_. R package version 
 
 Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Xie Y, Allen J, McPherson J, Dipert A, Borges B (2023). _shiny: Web Application Framework
 for R_. R package version 1.8.0, <https://CRAN.R-project.org/package=shiny>.
+
+Pebesma E, Bivand R (2023). _Spatial Data Science: With applications in R_. Chapman and Hall/CRC. doi:10.1201/9780429459016
+<https://doi.org/10.1201/9780429459016>, <https://r-spatial.org/book/>.
+
+LaZerte S, Albers S (2018). “weathercan: Download and format weather data from Environment and Climate Change Canada.” _The Journal of Open Source Software_,
+*3*(22), 571. <https://joss.theoj.org/papers/10.21105/joss.00571>.
 
 Firke S (2023). _janitor: Simple Tools for Examining and Cleaning Dirty Data_. R package version 2.2.0,
 <https://CRAN.R-project.org/package=janitor>.
@@ -69,5 +82,12 @@ Xie Y, Cheng J, Tan X (2023). _DT: A Wrapper of the JavaScript Library 'DataTabl
 <https://CRAN.R-project.org/package=DT>.
 
 Chang W (2021). _shinythemes: Themes for Shiny_. R package version 1.2.0, <https://CRAN.R-project.org/package=shinythemes>.
+
+Roesslein, Joshua. (2024). *Tweepy: Twitter for Python!* Available at https://www.tweepy.org.
+
+Reitz, Kenneth, & Chisom, Cory. (2024). *Requests: HTTP for Humans* [Software]. Available at https://docs.python-requests.org/en/latest/.
+
+
+
 
 

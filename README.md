@@ -1,7 +1,8 @@
 # Mosquito Monitor  <img src='mosquito_monitor_hexsticker.png' align="right" height="210" />
 
 [![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) ![](https://img.shields.io/badge/Status-In_Development-purple) ![](https://img.shields.io/badge/Build-Functional-green) ![](https://img.shields.io/badge/Version-0.0.3-orange)
-
+![License](https://img.shields.io/github/license/colebaril/Mosquito_Monitor)
+![Last Commit](https://img.shields.io/github/last-commit/colebaril/Mosquito_Monitor)
 ![](https://img.shields.io/twitter/follow/MosquitoMonitor)
 
 I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monitor/blob/main/.github/workflows/) and [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) that, in conjunction, collects mosquito trap data from government sources, stores historical data, and displays data in a digestable format. Historical data for the City of Brandon, City of Winnipeg and Western Manitoba will be displayed in addition to daily updates on City of Winnipeg and City of Brandon trap counts. When the data is updated, a Tweet is sent from the [Mosquito Monitor Twitter Account](https://twitter.com/MosquitoMonitor). 

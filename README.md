@@ -21,7 +21,7 @@ I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monito
 
 # Known Issues
 
-1. The R3C (Broadway / The Forks / Portage and Main) Forward Sortation Area (FSA) includes geometry for Northwest Winnipeg, out of city limits, with a land area of 143 square kilometres. If the R3C FSA is included in the colour scale, a large portion outside the city is also coloured and distorts the map. Thus, this FSA in the city map is not coloured. A bug ticket has been sent to Statistics Canada.
+1. The R3C (Broadway / The Forks / Portage and Main) Forward Sortation Area (FSA) includes geometry for Northwest Winnipeg, out of city limits, with a land area of 143 square kilometres. If the R3C FSA is included in the colour scale, a large portion outside the city is also coloured and distorts the map. Thus, this FSA in the city map is not coloured. A ticket has been sent to Statistics Canada.
 
 # Citing This Repository
 

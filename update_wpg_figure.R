@@ -78,12 +78,20 @@ shape <- read_sf("Mosquito_Monitor-be9f58d9fb6bc1940a67215cff8dd33e719bd780/Shap
 
 wpg_shape_data <- shape
 
+# Define the bins for mosquito counts
+bins <- c(0, 1, 10, 50, 100, 500, 1000, 3000)
+labels <- c("0", "1-10", "11-50", "51-100", "101-500", "501-1,000", "1,001-3,000")
+values = c("#440154FF", "#443A83FF", "#31688EFF", "#21908CFF", "#35B779FF", "#8FD744FF", "#FDE725FF")
+
+
 plot <- master_data %>% 
   filter(date == max(master_data$date)) %>%
   full_join(wpg_shape_data, by = c("trap" = "trap_name")) %>% 
   filter(map_type == "Winnipeg") %>% 
-  ggplot(aes(geometry = geometry, fill = number)) +
-  geom_sf() +
+  mutate(binned_number = cut(number, breaks = bins, labels = labels, include.lowest = TRUE)) %>%
+  mutate(binned_number = factor(binned_number, levels = c("0", "1-10", "11-50", "51-100", "101-500", "501-1,000", "1,001-3,000"))) %>%
+  ggplot(aes(geometry = geometry, fill = binned_number), show.legend = TRUE, colour = "black") +
+  geom_sf(show.legend = TRUE) +
   annotate("text", x = 5815500, y = 1550000, label = paste0("Lilyfield\n", n_lilyfield),
            size = 5, color = "black") +
   annotate("text", x = 5829000, y = 1527500, label = paste0("Springfield\n", n_springfield),
@@ -103,13 +111,12 @@ plot <- master_data %>%
   annotate("text", x = 5832500, y = 1537500, label = paste0("Ritchot\n", n_ritch),
            size = 5, color = "black") +
   theme_void(base_size = 20) +
-  scale_fill_viridis_c("Total \nMosquitoes") +
+   scale_fill_manual("Number of \nMosquitoes", values = values, na.value = "grey50", drop = FALSE) +
   labs(title = "Winnipeg Mosquito Trap Count Summary",
        subtitle = paste0("Last Updated ", format(Sys.Date(), "%A, %B %d, %Y")),
        caption = "Grey/white zones: no data. Counts for areas out of city limits displayed as text. \nViz & Workflow by Cole Baril | colebaril.ca") +
   theme(legend.position = "left",
         plot.caption = element_text(hjust = 0),
         plot.title = element_text(face = "bold"))
-  
 
 ggsave("wpg_mosquito_map_tmp.png", plot = plot, dpi = 300, units = "in", width = 11, height = 11, limitsize = FALSE)

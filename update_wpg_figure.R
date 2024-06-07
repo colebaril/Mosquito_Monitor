@@ -104,6 +104,12 @@ plot <- master_data %>%
            size = 5, color = "black") +
   theme_void(base_size = 20) +
   scale_fill_viridis_c("Total \nMosquitoes") +
-  theme(legend.position = "left")
+  labs(title = "Winnipeg Mosquito Trap Count Summary",
+       subtitle = paste0("Last Updated ", format(Sys.Date(), "%A, %B %d, %Y")),
+       caption = "Grey/white zones: no data. Counts for areas out of city limits displayed as text. \nViz & Workflow by Cole Baril | colebaril.ca") +
+  theme(legend.position = "left",
+        plot.caption = element_text(hjust = 0),
+        plot.title = element_text(face = "bold"))
+  
 
-ggsave("wpg_mosquito_map_tmp.png", plot = plot, dpi = 300, units = "in", width = 10, height = 10, limitsize = FALSE)
+ggsave("wpg_mosquito_map_tmp.png", plot = plot, dpi = 300, units = "in", width = 11, height = 11, limitsize = FALSE)

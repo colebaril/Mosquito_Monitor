@@ -9,14 +9,6 @@ on:
 
 jobs:
 
-  build:
-    runs-on: self-hosted
-    name: wait-job
-    steps:
-      - name: Sleep for 3 minutes
-        run: sleep 180s
-        shell: bash
-        
   import-data:
     runs-on: ubuntu-latest
     steps:

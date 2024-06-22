@@ -1,7 +1,10 @@
 import tweepy
 import os
 import requests
+import time
 from datetime import datetime
+
+time.sleep(60)
 
 
 consumer_key = os.getenv('CONSUMER_TOKEN')

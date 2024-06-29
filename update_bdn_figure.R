@@ -22,4 +22,6 @@ master_data |>
   data_color(columns = `Trap 1`:`Trap 5`,
              direction = "row",
              palette = "viridis") |> 
+  tab_header("City of Brandon Mosquito Trap Counts") |> 
+  tab_footnote("Viz & Workflow by Cole Baril | colebaril.ca") |> 
   gtsave("bdn_mosquito_update_table.png")

@@ -4,7 +4,7 @@ import requests
 import time
 from datetime import datetime
 
-time.sleep(360)
+time.sleep(60)
 
 
 consumer_key = os.getenv('CONSUMER_TOKEN')

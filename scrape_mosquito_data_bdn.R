@@ -42,7 +42,7 @@ mosquito_df <- mosquito_df |>
   select(1:7) |> 
   mutate(`Sampling Dates` = as.Date(`Sampling Dates`))
 
-date_updated <- as.Date(max(mosquito_df$`Sampling Dates`))
+date_updated <- as.Date(max(mosquito_df$`Sampling Dates`, na.rm=TRUE))
 
 
 master_data_old <- read_csv(url("https://raw.githubusercontent.com/colebaril/Mosquito_Monitor/main/mosquito_data_bdn.csv")) |> 

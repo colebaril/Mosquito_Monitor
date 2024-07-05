@@ -48,7 +48,7 @@ date_updated <- as.Date(max(mosquito_df$`Sampling Dates`, na.rm=TRUE))
 master_data_old <- read_csv(url("https://raw.githubusercontent.com/colebaril/Mosquito_Monitor/main/mosquito_data_bdn.csv")) |> 
   mutate(`Sampling Dates` = as.Date(`Sampling Dates`))
 
-if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
+if(max(master_data_old$`Sampling Dates`) == Sys.Date() | date_updated != Sys.Date()) {
   
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
   

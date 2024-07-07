@@ -6,8 +6,9 @@ library(lubridate)
 library(ggplot2)
 library(readr)
 library(gt)
+library(webshot2)
 
-Sys.sleep(360)
+Sys.sleep(60)
 
 master_data <- read_csv(url("https://raw.githubusercontent.com/colebaril/Mosquito_Monitor/main/mosquito_data_bdn.csv")) |> 
   mutate(`Sampling Dates` = as.Date(`Sampling Dates`))

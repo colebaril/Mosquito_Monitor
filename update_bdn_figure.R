@@ -8,6 +8,7 @@ library(readr)
 library(gt)
 library(webshot)
 
+webshot::install_phantomjs()
 
 # Sys.sleep(60)
 

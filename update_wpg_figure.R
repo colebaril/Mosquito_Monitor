@@ -88,6 +88,12 @@ labels <- c("0", "1-10", "11-50", "51-100", "101-500", "501-1,000", "1,001-3,000
 values = c("#440154FF", "#443A83FF", "#31688EFF", "#21908CFF", "#35B779FF", "#8FD744FF", "#FDE725FF")
 
 
+city_mean <- master_data %>% 
+  filter(date == max(master_data$date)) |> 
+  summarise(mean = mean(as.numeric(number), na.rm=TRUE)) |> 
+  pull() |> round(digits = 2)
+
+
 plot <- master_data %>% 
   filter(date == max(master_data$date)) %>%
   full_join(wpg_shape_data, by = c("trap" = "trap_name")) %>% 
@@ -117,7 +123,7 @@ plot <- master_data %>%
   theme_void(base_size = 20) +
    scale_fill_manual("Number of \nMosquitoes", values = values, na.value = "grey50", drop = FALSE) +
   labs(title = "Winnipeg Mosquito Trap Count Summary",
-       subtitle = paste0("Last Updated ", format(Sys.Date(), "%A, %B %d, %Y")),
+       subtitle = paste0("Last Updated ", format(Sys.Date(), "%A, %B %d, %Y"), "\nCity Wide Average: ", city_mean),
        caption = "Grey/white zones: no data. Counts for areas out of city limits displayed as text. \nViz & Workflow by Cole Baril | colebaril.ca") +
   theme(legend.position = "left",
         plot.caption = element_text(hjust = 0),

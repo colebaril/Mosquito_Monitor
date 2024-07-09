@@ -6,6 +6,7 @@ library(lubridate)
 library(ggplot2)
 library(readr)
 library(gt)
+library(webshot)
 
 
 # Sys.sleep(60)
@@ -13,7 +14,7 @@ library(gt)
 master_data <- read_csv(url("https://raw.githubusercontent.com/colebaril/Mosquito_Monitor/main/mosquito_data_bdn.csv")) |> 
   mutate(`Sampling Dates` = as.Date(`Sampling Dates`))
 
-master_data |> 
+table <- master_data |> 
   filter(`Sampling Dates` == max(master_data$`Sampling Dates`)) |> 
   mutate(Week = week(`Sampling Dates`)) |> 
   relocate(Week, .after = `Sampling Dates`) |> 
@@ -24,5 +25,8 @@ master_data |>
              direction = "row",
              palette = "viridis") |> 
   tab_header("City of Brandon Mosquito Trap Counts") |> 
-  tab_footnote("Viz & Workflow by Cole Baril | colebaril.ca") |> 
-  gtsave("bdn_mosquito_update_table.png")
+  tab_footnote("Viz & Workflow by Cole Baril | colebaril.ca")
+
+gt::gtsave(table, "table.html")
+
+webshot::webshot(url = "table.html", file = "bdn_mosquito_update_table.png")

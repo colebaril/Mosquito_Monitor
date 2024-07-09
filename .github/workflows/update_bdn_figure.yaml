@@ -22,7 +22,6 @@ jobs:
             any::tidyverse 
             any::janitor
             any::gt
-            any::webshot2
 
       - name: Check out repository
         uses: actions/checkout@v3

@@ -30,16 +30,11 @@ jobs:
 
       - name: Debug Environment Variables
         run: |
-          echo "CONSUMER_TOKEN=${{ secrets.CONSUMER_TOKEN }}"
-          echo "CONSUMER_TOKEN_SECRET=${{ secrets.CONSUMER_TOKEN_SECRET }}"
-          echo "ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}"
-          echo "ACCESS_TOKEN_SECRET=${{ secrets.ACCESS_TOKEN_SECRET }}"
+          echo "BSKY_KEY=${{ secrets.BSKY_KEY }}"
 
       - name: Tweet a message
         env:
-          CONSUMER_TOKEN: ${{ secrets.CONSUMER_TOKEN }}
-          CONSUMER_TOKEN_SECRET: ${{ secrets.CONSUMER_TOKEN_SECRET }}
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+          BSKY_KEY: ${{ secrets.BSKY_KEY }}
+          
         run: |
           python skeet_mosquito_update.py

@@ -1,4 +1,6 @@
-# Mosquito Monitor  <img src='mosquito_monitor_hexsticker.png' align="right" height="210" />
+# Mosquito Monitor  
+
+<img src='mosquito_monitor_hexsticker.png' align="right" height="210" />
 
 [![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) 
 ![](https://img.shields.io/badge/Status-Inactive-red) ![](https://img.shields.io/badge/Build-Functional-green) 

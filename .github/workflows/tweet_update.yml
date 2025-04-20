@@ -1,6 +1,6 @@
 name: Tweet from GitHub Actions
 
-off:
+on:
   push:
     branches:
       - main

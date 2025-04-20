@@ -7,6 +7,7 @@
 ![](https://img.shields.io/badge/Version-0.0.4-orange)
 ![Last Commit](https://img.shields.io/github/last-commit/colebaril/Mosquito_Monitor)
 ![](https://img.shields.io/twitter/follow/MosquitoMonitor)
+[![Scrape Data](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml)
 
 As of April 2025, this project is now active again as the City of Winnipeg and City of Brandon begins conducting mosquito surveillance. 
 

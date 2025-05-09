@@ -82,9 +82,7 @@ if(nrow(master_data_old) == 0) {
   
   write.csv(master_data, "mosquito_data.csv", row.names = FALSE)
   
-}
-
-if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
+} else if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
   
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
   

@@ -1,7 +1,8 @@
 name: Scrape Data Brandon
-off:
+on:
   schedule:
     - cron: '0 * * * *' # This will run the workflow at the beginning of every hour
+  workflow_dispatch:
 
 jobs:
   import-data:

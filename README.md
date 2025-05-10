@@ -3,10 +3,11 @@
 <img src='mosquito_monitor_hexsticker.png' align="right" height="210" />
 
 [![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) 
-![](https://img.shields.io/badge/Status-Active-green) ![](https://img.shields.io/badge/Build-Functional-green) 
-![](https://img.shields.io/badge/Version-0.0.4-orange)
+![](https://img.shields.io/badge/Status-Active-green) 
+![](https://img.shields.io/badge/Version-0.0.5-orange)
 ![Last Commit](https://img.shields.io/github/last-commit/colebaril/Mosquito_Monitor)
-![](https://img.shields.io/twitter/follow/MosquitoMonitor)
+[![Follow on Twitter](https://img.shields.io/badge/Twitter-Follow-blue?logo=twitter&logoColor=white)](https://twitter.com/mosquitomonitor)
+[![Follow on Bluesky](https://img.shields.io/badge/Bluesky-Follow-blue?logo=bluesky)](https://bsky.app/profile/mosquitomonitor.bsky.social)
 [![Scrape Data](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml)
 [![Scrape Data Brandon](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data_bdn.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data_bdn.yaml)
 
@@ -15,6 +16,12 @@ As of April 2025, this project is now active again as the City of Winnipeg and C
 I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monitor/blob/main/.github/workflows/) and [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) that, in conjunction, collects mosquito trap data from government sources, stores historical data, and displays data in a digestable format. Historical data for the City of Brandon, City of Winnipeg and Western Manitoba will be displayed in addition to daily updates on City of Winnipeg and City of Brandon trap counts. When the data is updated, a Tweet is sent from the [Mosquito Monitor Twitter Account](https://twitter.com/MosquitoMonitor). 
 
 # Updates
+
+## Version 0.0.5
+
+- Added a Bluesky bot that functions exactly the same as the Twitter bot. Follow [here](https://bsky.app/profile/mosquitomonitor.bsky.social)
+- Added a check for no data; this allows the first run of the year to work correctly
+- Changed environment timezone to Winnipeg local to improve accuracy of the figure and data processing
 
 ## Version 0.0.4
 

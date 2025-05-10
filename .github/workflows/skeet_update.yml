@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - wpg_mosquito_map_tmp.png
+  workflow_dispatch:
 
 jobs:
   tweet:

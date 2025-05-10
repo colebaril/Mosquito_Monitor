@@ -33,9 +33,8 @@ with open(local_image_path, 'rb') as img_file:
 # Compose message
 current_date = datetime.now().strftime('%Y-%m-%d')
 message = (
-    f"City of Winnipeg mosquito trap counts have been updated as of {current_date}. "
-    "See a detailed update here: https://shorturl.at/MGzTL\n"
-    "#Winnipeg #Mosquitoes #Mosquito #CityOfWinnipeg #HealthAlert"
+    f"City of Winnipeg mosquito trap counts have been updated. "
+    "See a detailed update here: https://shorturl.at/MGzTL"
 )
 
 # Create post with image

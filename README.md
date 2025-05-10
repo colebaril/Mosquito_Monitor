@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/Status-Active-green) 
 ![](https://img.shields.io/badge/Version-0.0.5-orange)
 ![Last Commit](https://img.shields.io/github/last-commit/colebaril/Mosquito_Monitor)
-[![Follow on Twitter](https://img.shields.io/badge/Twitter-Follow-blue?logo=twitter&logoColor=white)](https://twitter.com/mosquitomonitor)
+[![Follow on X](https://img.shields.io/badge/X-Follow-blue?logo=x&logoColor=white)](https://twitter.com/mosquitomonitor)
 [![Follow on Bluesky](https://img.shields.io/badge/Bluesky-Follow-blue?logo=bluesky)](https://bsky.app/profile/mosquitomonitor.bsky.social)
 [![Scrape Data](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml)
 [![Scrape Data Brandon](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data_bdn.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data_bdn.yaml)

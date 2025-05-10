@@ -6,6 +6,8 @@ library(tidyr)
 library(lubridate)
 library(readr)
 
+Sys.setenv(TZ = "America/Winnipeg")
+
 # Define the URL you want to scrape
 url <- "https://legacy.winnipeg.ca/publicworks/insectcontrol/mosquitoes/trapcounts.stm"
 

@@ -98,7 +98,7 @@ plot <- master_data %>%
   filter(date == max(master_data$date)) %>%
   full_join(wpg_shape_data, by = c("trap" = "trap_name")) %>% 
   filter(map_type == "Winnipeg") %>% 
-  mutate(binned_number = cut(number, breaks = bins, labels = labels, include.lowest = TRUE)) %>%
+  mutate(binned_number = cut(number, breaks = bins, labels = labels, include.lowest = TRUE, right = FALSE)) %>%
   mutate(binned_number = factor(binned_number, levels = c("0", "1-10", "11-50", "51-100", "101-500", "501-1,000", "1,001-3,000"))) %>%
   ggplot(aes(geometry = geometry, fill = binned_number), show.legend = TRUE, colour = "black") +
   geom_sf(show.legend = TRUE) +
@@ -121,10 +121,10 @@ plot <- master_data %>%
   annotate("text", x = 5832500, y = 1537500, label = paste0("Ritchot\n", n_ritch),
            size = 5, color = "black") +
   theme_void(base_size = 20) +
-   scale_fill_manual("Number of \nMosquitoes", values = values, na.value = "grey50", drop = FALSE) +
+  scale_fill_manual("Number of \nMosquitoes", values = values, na.value = "grey50", drop = FALSE) +
   labs(title = "Winnipeg Mosquito Trap Count Summary",
        subtitle = paste0("Last Updated ", format(Sys.Date(), "%A, %B %d, %Y"), "\nCity Wide Average: ", city_mean),
-       caption = "Grey/white zones: no data. Counts for areas out of city limits displayed as text. \nViz & Workflow by Cole Baril | colebaril.ca") +
+       caption = "Grey/white zones: no data. Counts for areas out of city limits displayed as text.") +
   theme(legend.position = "left",
         plot.caption = element_text(hjust = 0),
         plot.title = element_text(face = "bold"))

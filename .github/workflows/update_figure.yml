@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - mosquito_data.csv
+  workflow_dispatch:
 
 jobs:
 

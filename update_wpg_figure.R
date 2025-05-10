@@ -9,7 +9,9 @@ library(readr)
 
 # Wait 3 minutes before running. Weird bug occurred where the previous data is used if the figure update script starts too fast. 
 
-#Sys.sleep(180)
+Sys.setenv(TZ = "America/Winnipeg")
+
+Sys.sleep(180)
 
 master_data <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
 

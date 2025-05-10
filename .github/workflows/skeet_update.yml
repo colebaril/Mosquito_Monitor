@@ -28,6 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install datetime
           pip install atproto
+          pip install requests
 
       - name: Debug Environment Variables
         run: |

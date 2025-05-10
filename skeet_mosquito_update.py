@@ -10,7 +10,7 @@ if not bsky_key:
 
 # Initialize client and login
 client = Client()
-client.login('@mosquitomonitor.bsky.social', bsky_key)
+client.login('mosquitomonitor.bsky.social', bsky_key)
 
 # Post your message
 client.send_post('Hello world! I posted this via GitHub Actions (test).')

@@ -36,6 +36,12 @@ all_data <- lapply(columns, get_data_for_column)
 # Combine the data into a single data frame
 mosquito_df <- do.call(cbind, lapply(all_data, function(x) as.data.frame(x)))
 
+# Checking if an error is retrieved (usually indicates no data yet for the season)
+                                  
+if("error" %in% colnames(mosquito_df)){
+  stop("No data available via the API. Stopping script and tryting again in an hour.")
+}
+                                     
 # Print the first few rows of the combined data frame
 
 mosquito_df <- mosquito_df |> 

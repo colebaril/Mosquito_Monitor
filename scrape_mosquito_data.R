@@ -84,13 +84,13 @@ if(nrow(master_data_old) == 0) {
   
   write.csv(master_data, "mosquito_data.csv", row.names = FALSE)
   
-} else if(max(master_data_old$date) == Sys.Date() | date_updated != Sys.Date()) {
+} else if(max(master_data_old$date) == Sys.Date()) {
   
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
   
   message(paste0("Website last updated: ", date_updated, "."))
   
-} else if(date_updated == Sys.Date()) {
+} else if(max(master_data_old$date) != Sys.Date()) {
   
   data <- scrape_and_save_data()
   

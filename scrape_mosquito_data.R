@@ -8,32 +8,27 @@ library(readr)
 
 Sys.setenv(TZ = "America/Winnipeg")
 
-# Define the URL you want to scrape
 url <- "https://legacy.winnipeg.ca/publicworks/insectcontrol/mosquitoes/trapcounts.stm"
-
-# Check date updated
 
 webpage <- read_html(url)
 
-date_updated <- html_nodes(webpage, "#lastUpdateDate") %>% 
-  html_text() %>% 
-  str_extract(., "\\b[A-Za-z]+ \\d{1,2}, \\d{4}\\b") 
+date_updated <- webpage |> 
+  html_table(fill = TRUE) %>% 
+  .[[1]] |> 
+  slice(1) |> select(2) |> pull() |> as.Date(., format = "%B %d, %Y")
 
-date_updated <- format(as.Date(date_updated, "%B %d, %Y"), "%Y-%m-%d")
-
-# Function to scrape and save data
 scrape_and_save_data <- function() {
-  # Scrape data from the website
+
   webpage <- read_html(url)
   
   data <- webpage %>%
     html_table(fill = TRUE) %>%
-    .[[2]]  # Assuming the data is in the first table
+    .[[2]]
   
   return(data)
 }
 
-master_data_old <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
+master_data_old <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE")) 
 
 if(nrow(master_data_old) == 0) {
   
@@ -84,13 +79,12 @@ if(nrow(master_data_old) == 0) {
   
   write.csv(master_data, "mosquito_data.csv", row.names = FALSE)
   
-} else if(max(master_data_old$date) == Sys.Date()) {
+} else if(max(master_data_old$date) == date_updated) {
   
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
-  
   message(paste0("Website last updated: ", date_updated, "."))
   
-} else if(max(master_data_old$date) != Sys.Date()) {
+} else if(max(master_data_old$date) != date_updated) {
   
   data <- scrape_and_save_data()
   
@@ -131,16 +125,12 @@ if(nrow(master_data_old) == 0) {
     distinct(trap, .keep_all = TRUE) %>% 
     mutate(region_name = trap)
   
-  
   master_data <- rbind(trap_data_wpg, trap_data_metro, master_data_old) 
   
   message(paste0("Data has been updated on ", Sys.Date(), "."))
   message(paste0("Website last updated ", date_updated, "."))
   
   write.csv(master_data, "mosquito_data.csv", row.names = FALSE)
-  
-  
 }
-
 
 

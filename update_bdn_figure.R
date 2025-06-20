@@ -26,7 +26,7 @@ plot <- master_data |>
        title = paste0("Brandon Mosquito Trap Count Summary"),
        subtitle = paste0("Last Updated ", format(head(master_data$`Sampling Dates`), "%A, %B %d, %Y"), "\nCity Wide Average: ", 
                          head(master_data$`Daily Average Count`)),
-       caption = "Average indicated by the red horizontal line. Viz by Cole Baril | colebaril.ca") +
+       caption = "Average indicated by the red horizontal line") +
   theme(plot.title = element_text(face = "bold"))
 
 ggsave("bdn_mosquito_update_table.png", plot = plot, dpi = 300, units = "in", width = 9, height = 9, limitsize = FALSE)

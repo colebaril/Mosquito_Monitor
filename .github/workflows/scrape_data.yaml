@@ -1,5 +1,5 @@
 name: Scrape Data
-on:
+off:
   schedule:
     - cron: '0 * * * *' # This will run the workflow at the beginning of every hour
   workflow_dispatch:
@@ -37,3 +37,4 @@ jobs:
           git push origin || echo "No changes to commit"
 
     
+

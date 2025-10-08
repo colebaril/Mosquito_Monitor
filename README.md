@@ -3,7 +3,7 @@
 <img src='mosquito_monitor_hexsticker.png' align="right" height="210" />
 
 [![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://colewb.shinyapps.io/Mosquito_Monitor/) 
-![](https://img.shields.io/badge/Status-Active-green) 
+![](https://img.shields.io/badge/Status-Sleeping-green) 
 ![](https://img.shields.io/badge/Version-0.0.5-orange)
 ![Last Commit](https://img.shields.io/github/last-commit/colebaril/Mosquito_Monitor)
 [![Follow on X](https://img.shields.io/badge/X-Follow-blue?logo=x&logoColor=white)](https://twitter.com/mosquitomonitor)
@@ -11,7 +11,7 @@
 [![Scrape Data](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data.yaml)
 [![Scrape Data Brandon](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data_bdn.yaml/badge.svg)](https://github.com/colebaril/Mosquito_Monitor/actions/workflows/scrape_data_bdn.yaml)
 
-As of April 2025, this project is now active again as the City of Winnipeg and City of Brandon begins conducting mosquito surveillance. 
+As of October 2025, this project is paused until municipaities begin mosquito surveillance in spring 2026.
 
 I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monitor/blob/main/.github/workflows/) and [Shiny App](https://colewb.shinyapps.io/Mosquito_Monitor/) that, in conjunction, collects mosquito trap data from government sources, stores historical data, and displays data in a digestable format. Historical data for the City of Brandon, City of Winnipeg and Western Manitoba will be displayed in addition to daily updates on City of Winnipeg and City of Brandon trap counts. When the data is updated, a Tweet is sent from the [Mosquito Monitor Twitter Account](https://twitter.com/MosquitoMonitor) and a Skeet is sent from the [Mosquito Monitor Bluesky Account](https://bsky.app/profile/mosquitomonitor.bsky.social). 
 

@@ -4,63 +4,70 @@ import requests
 import time
 from datetime import datetime
 
+# optional delay (you already had this)
 time.sleep(60)
 
-
+# ----------------------------
+# Load credentials
+# ----------------------------
 consumer_key = os.getenv('CONSUMER_TOKEN')
 consumer_secret = os.getenv('CONSUMER_TOKEN_SECRET')
 access_token = os.getenv('ACCESS_TOKEN')
 access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
 
-def get_twitter_conn_v1(consumer_key, consumer_secret, access_token, access_token_secret) -> tweepy.API:
-    """Get twitter conn 1.1"""
-
-    auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret)
-    auth.set_access_token(
-        access_token,
-        access_token_secret,
-    )
-    return tweepy.API(auth)
-
-def get_twitter_conn_v2(consumer_key, consumer_secret, access_token, access_token_secret) -> tweepy.Client:
-    """Get twitter conn 2.0"""
-
-    client = tweepy.Client(
-        consumer_key=consumer_key,
-        consumer_secret=consumer_secret,
-        access_token=access_token,
-        access_token_secret=access_token_secret,
-    )
-
-    return client
-
-client_v1 = get_twitter_conn_v1(consumer_key, consumer_secret, access_token, access_token_secret)
-client_v2 = get_twitter_conn_v2(consumer_key, consumer_secret, access_token, access_token_secret)
-
 if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
     raise ValueError("Twitter API credentials are not set properly")
 
-# URL of the image
-image_url = 'https://raw.githubusercontent.com/colebaril/Mosquito_Monitor/main/wpg_mosquito_map_tmp.png'
-local_image_path = 'wpg_mosquito_map_tmp.png'
+# ----------------------------
+# Twitter API v1.1 auth ONLY
+# ----------------------------
+auth = tweepy.OAuth1UserHandler(
+    consumer_key,
+    consumer_secret,
+    access_token,
+    access_token_secret
+)
 
-# Download the image
+api = tweepy.API(auth)
+
+# ----------------------------
+# Download image
+# ----------------------------
+image_url = "https://raw.githubusercontent.com/colebaril/Mosquito_Monitor/main/wpg_mosquito_map_tmp.png"
+local_image_path = "wpg_mosquito_map_tmp.png"
+
 response = requests.get(image_url)
+
 if response.status_code == 200:
-    with open(local_image_path, 'wb') as file:
-        file.write(response.content)
+    with open(local_image_path, "wb") as f:
+        f.write(response.content)
     print(f"Image downloaded and saved to {local_image_path}")
 else:
-    print(f"Failed to download image. Status code: {response.status_code}")
+    raise Exception(f"Failed to download image. Status code: {response.status_code}")
 
-media_path = local_image_path
-media = client_v1.media_upload(filename=media_path)
+# ----------------------------
+# Upload media (v1.1)
+# ----------------------------
+media = api.media_upload(filename=local_image_path)
 media_id = media.media_id
 
-# Get the current date
+# ----------------------------
+# Build tweet message
+# ----------------------------
 current_date = datetime.now().strftime('%Y-%m-%d')
 
-# Create a tweet
-message = f"City of Winnipeg mosquito trap counts have been updated. See a detailed update here: https://shorturl.at/MGzTL. \n#Winnipeg #Mosquitoes #Mosquito #CityOfWinnipeg #HealthAlert"
-client_v2.create_tweet(media_ids=[media_id], text=message)
+message = (
+    "City of Winnipeg mosquito trap counts have been updated. "
+    "See a detailed update here: https://shorturl.at/MGzTL. "
+    "\n#Winnipeg #Mosquitoes #Mosquito #CityOfWinnipeg #HealthAlert"
+)
+
+# ----------------------------
+# Post tweet (v1.1)
+# ----------------------------
+api.update_status(
+    status=message,
+    media_ids=[media_id]
+)
+
 print("Tweeted!")

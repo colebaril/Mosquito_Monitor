@@ -7,7 +7,7 @@ library(lubridate)
 library(ggplot2)
 library(readr)
 
-# Sys.sleep(360)
+ Sys.sleep(360)
 
 master_data <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
 

@@ -11,6 +11,8 @@ library(readr)
 
 master_data <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
 
+# master_data <- read_csv(here("mosquito_data.csv"))
+
 n_ross <- master_data %>% 
   filter(date == max(master_data$date)) %>%
   filter(trap == "ii") %>% 
@@ -93,7 +95,7 @@ city_mean <- master_data %>%
 
 plot <- master_data %>% 
   filter(date == max(master_data$date)) %>%
-  full_join(wpg_shape_data, by = c("trap" = "trap_name")) %>% 
+  full_join(wpg_shape_data, by = c("region_name" = "trap_name")) %>%  
   filter(map_type == "Winnipeg") %>% 
   mutate(binned_number = cut(number, breaks = bins, labels = labels, include.lowest = TRUE)) %>%
   mutate(binned_number = factor(binned_number, levels = c("0", "1-10", "11-50", "51-100", "101-500", "501-1,000", "1,001-3,000"))) %>%

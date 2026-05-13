@@ -28,7 +28,7 @@ if(max(as.Date(master_data_old$date)) == max(as.Date(mosquito_data_latest$count_
   
   message(paste0("Data last updated: ", max(mosquito_data_latest$count_date), "."))
   
-} else if(max(master_data_old$date) < max(mosquito_data_latest$date)) {
+} else if(max(master_data_old$date) < max(mosquito_data_latest$count_date)) {
   
   message("New data detected. Running script...")
 

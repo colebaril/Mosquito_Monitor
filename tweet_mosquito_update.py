@@ -4,22 +4,21 @@ import requests
 import time
 from datetime import datetime
 
-# optional delay (you already had this)
 time.sleep(60)
 
 # ----------------------------
-# Load credentials
+# Load credentials (same as before)
 # ----------------------------
-consumer_key = os.getenv('CONSUMER_TOKEN')
-consumer_secret = os.getenv('CONSUMER_TOKEN_SECRET')
-access_token = os.getenv('ACCESS_TOKEN')
-access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+consumer_key = os.getenv("CONSUMER_TOKEN")
+consumer_secret = os.getenv("CONSUMER_TOKEN_SECRET")
+access_token = os.getenv("ACCESS_TOKEN")
+access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 
 if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
-    raise ValueError("Twitter API credentials are not set properly")
+    raise ValueError("Missing Twitter credentials")
 
 # ----------------------------
-# Twitter API v1.1 auth ONLY
+# OAuth1 for media upload (still required)
 # ----------------------------
 auth = tweepy.OAuth1UserHandler(
     consumer_key,
@@ -28,7 +27,17 @@ auth = tweepy.OAuth1UserHandler(
     access_token_secret
 )
 
-api = tweepy.API(auth)
+api_v1 = tweepy.API(auth)
+
+# ----------------------------
+# v2 client for tweeting
+# ----------------------------
+client_v2 = tweepy.Client(
+    consumer_key=consumer_key,
+    consumer_secret=consumer_secret,
+    access_token=access_token,
+    access_token_secret=access_token_secret
+)
 
 # ----------------------------
 # Download image
@@ -43,18 +52,18 @@ if response.status_code == 200:
         f.write(response.content)
     print(f"Image downloaded and saved to {local_image_path}")
 else:
-    raise Exception(f"Failed to download image. Status code: {response.status_code}")
+    raise Exception(f"Failed to download image: {response.status_code}")
 
 # ----------------------------
-# Upload media (v1.1)
+# Upload media (v1.1 still required)
 # ----------------------------
-media = api.media_upload(filename=local_image_path)
-media_id = media.media_id
+media = api_v1.media_upload(filename=local_image_path)
+media_id = media.media_id_string  # IMPORTANT: string is safer for v2
 
 # ----------------------------
-# Build tweet message
+# Build tweet
 # ----------------------------
-current_date = datetime.now().strftime('%Y-%m-%d')
+current_date = datetime.now().strftime("%Y-%m-%d")
 
 message = (
     "City of Winnipeg mosquito trap counts have been updated. "
@@ -63,11 +72,12 @@ message = (
 )
 
 # ----------------------------
-# Post tweet (v1.1)
+# Post tweet (v2)
 # ----------------------------
-api.update_status(
-    status=message,
+response = client_v2.create_tweet(
+    text=message,
     media_ids=[media_id]
 )
 
 print("Tweeted!")
+print(response)

@@ -28,16 +28,14 @@ scrape_and_save_data <- function() {
   return(data)
 }
 
-master_data_old <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE")) |> 
-  filter(!date %in% c("2026-05-13", "2026-05-11")) |> 
-  select(-2:-3)
+master_data_old <- read_csv(url("https://github.com/colebaril/Mosquito_Monitor/blob/main/mosquito_data.csv?raw=TRUE"))
 
-if(max(master_data_old$date) == date_updated) {
+if(max(master_data_old$date, na.rm = TRUE) == date_updated) {
   
   message(paste0("Data is already up to date as of ", Sys.Date(), "."))
   message(paste0("Website last updated: ", date_updated, "."))
   
-} else if(date_updated > max(master_data_old$date)) {
+} else if(date_updated > max(master_data_old$date, na.rm = TRUE)) {
   
   data <- scrape_and_save_data()
   

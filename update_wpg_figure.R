@@ -126,6 +126,8 @@ plot <- master_data %>%
        caption = "Grey/white zones: no data. Counts for areas out of city limits displayed as text.") +
   theme(legend.position = "left",
         plot.caption = element_text(hjust = 0),
-        plot.title = element_text(face = "bold"))
+        plot.title = element_text(face = "bold"),
+        panel.background = element_rect(fill = "white", colour = NA),
+        plot.background = element_rect(fill = "white", colour = NA))
 
 ggsave("wpg_mosquito_map_tmp.png", plot = plot, dpi = 300, units = "in", width = 11, height = 11, limitsize = FALSE)

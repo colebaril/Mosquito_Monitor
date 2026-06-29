@@ -22,27 +22,35 @@ I developed an [automated workflow](https://github.com/colebaril/Mosquito_Monito
 - Converted the City of Winnipeg and Western Manitoba (2020-2021) maps to interactive Leaflet maps.
 - Added in a tab to display data from mosquitoes I am collecting from my backyard.
 
-## Version 0.0.5
+<details>
+<summary><h2 style="display:inline;">Version 0.0.5</h2></summary>
 
 - Added a Bluesky bot that functions exactly the same as the Twitter bot. Follow [here](https://bsky.app/profile/mosquitomonitor.bsky.social)
 - Added a check for no data; this allows the first run of the year to work correctly
 - Changed environment timezone to Winnipeg local to improve accuracy of the figure and data processing
+</details>
 
-## Version 0.0.4
+<details>
+<summary><h2 style="display:inline;">Version 0.0.4</h2></summary>
 
 - Identified a bug that causes the figure to be updated before the updated data is committed to the repository, resulting in old data being tweeted. This is likely due to how GitHub Actions handles triggers via commits
    - Added wait times such that the data is up-to-date by the time the scripts to update figures and Tweet runs
 - Added a workflow to include City of Brandon mosquito trap counts in both the Shiny application as well as the Twitter account notifications
+</details>
 
-## Version 0.0.3
+<details>
+<summary><h2 style="display:inline;">Version 0.0.3</h2></summary>
 
 - Changed y axis trans to `log1p` for the faceted Winnipeg plots to better display the poisson-like mosquito trap count distributions
 - Implemented a Twitter Bot using Python that sends a Tweet with the city map when the data has been updated
+</details>
 
-## Version 0.0.2
+<details>
+<summary><h2 style="display:inline;">Version 0.0.2</h2></summary>
 
 - Introduced a map of Winnipeg displaying the number of specimens caught in each zone separated by Forward Sortation Area
 - Introduced comparable weather data along with City of Winnipeg historical trapping data (e.g., temperature, precipitation)
+</details>
 
 # Citing This Repository
 
